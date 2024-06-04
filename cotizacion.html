@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cotización Final de Amigurumi</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ticket">
+      <div class="ticket-header">
+        <h1>Cotización de Amigurumi</h1>
+        <p>
+          Gracias por cotizar con nosotros
+         </p>
+          <p>No olvides tomarle screenshot a este ticket y enviarlo por WhatsApp 
+            <p><strong>¡Junto con la foto de tu personaje!</strong></p>
+          </p>
+        </p>
+      </div>
+
+      <div class="ticket-details">
+        <h2>Detalles de la Cotización</h2>
+        <ul>
+          <!-- Mostrar opciones elegidas -->
+          <li>
+            <strong>Número de colores:</strong>
+            <span id="num_colores"></span>
+          </li>
+          <li>
+            <strong>Tipo de hilo:</strong>
+            <span id="tipo_hilo"></span>
+          </li>
+          <li>
+            <strong>Tamaño seleccionado:</strong>
+            <span id="tamaño_seleccionado"></span>
+          </li>
+          <li>
+            <strong>Fecha de entrega:</strong>
+            <span id="fecha_entrega"></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="ticket-price">
+        <h2>Precio Final</h2>
+        <p id="precio_final"></p>
+      </div>
+    </div>
+
+    <!-- Botones de Redes Sociales -->
+    <div class="social-buttons">
+      <a href="https://www.facebook.com/profile.php?id=100083395221482&locale=es_LA" target="_blank">
+        <img src="Facebooklogo.png" alt="Facebook" width="50" height="50" />
+      </a>
+      <a href="https://wa.me/2288603643" target="_blank">
+        <img src="whatsapp.png" alt="WhatsApp" width="50" height="50" />
+      </a>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Obtener y mostrar opciones elegidas
+        var numColores = localStorage.getItem("num_colores");
+        var tipoHilo = localStorage.getItem("tipo_hilo");
+        var tamañoSeleccionado = localStorage.getItem("tamaño_seleccionado");
+        var fechaEntrega = localStorage.getItem("fecha_entrega");
+
+        document.getElementById("num_colores").textContent =
+          numColores + " colores";
+        document.getElementById("tipo_hilo").textContent = tipoHilo;
+        document.getElementById("tamaño_seleccionado").textContent =
+          tamañoSeleccionado;
+        document.getElementById("fecha_entrega").textContent = fechaEntrega;
+
+        // Calcular el precio final
+        var costoTotal = parseInt(localStorage.getItem("costo_total"));
+        var manoDeObra = costoTotal;
+        var precioFinal = costoTotal + manoDeObra;
+
+        // Mostrar el precio final
+        document.getElementById("precio_final").textContent =
+          "Precio final: $" + precioFinal.toFixed(2);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Cotización de Amigurumis - Fecha de Entrega</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Enlaza el archivo CSS externo -->
+    <script src="scripts.js"></script>
+    <!-- Enlaza el archivo JavaScript externo -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Selecciona la fecha de entrega deseada</h1>
+      <form id="fechaForm">
+        <div class="form-group">
+          <label for="fecha_entrega">Fecha de entrega:</label>
+          <input type="date" id="fecha_entrega" name="fecha_entrega" required />
+        </div>
+
+        <!-- Botón para calcular el precio y redirigir a la siguiente página -->
+        <button type="submit" class="cta-button">Calcular Precio Total</button>
+      </form>
+    </div>
+
+    <script>
+      // Función para establecer la fecha mínima permitida en el campo de fecha
+      document.addEventListener("DOMContentLoaded", function () {
+        var fechaActual = new Date();
+        var day = fechaActual.getDate();
+        var month = fechaActual.getMonth() + 1; // Los meses van de 0 a 11
+        var year = fechaActual.getFullYear();
+
+        if (day < 10) {
+          day = "0" + day; // Añade un cero si el día es menor a 10
+        }
+
+        if (month < 10) {
+          month = "0" + month; // Añade un cero si el mes es menor a 10
+        }
+
+        var fechaMinima = year + "-" + month + "-" + day;
+        document
+          .getElementById("fecha_entrega")
+          .setAttribute("min", fechaMinima);
+      });
+
+      // Función para calcular el precio según la fecha de entrega seleccionada
+      document
+        .getElementById("fechaForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevenir el envío del formulario
+
+          // Obtener la fecha de entrega seleccionada por el usuario
+          var fechaEntrega = new Date(
+            document.getElementById("fecha_entrega").value
+          );
+          var fechaActual = new Date();
+
+          // Calcular la diferencia en días entre la fecha actual y la fecha de entrega
+          var diffTiempo = fechaEntrega.getTime() - fechaActual.getTime();
+          var diffDias = Math.ceil(diffTiempo / (1000 * 60 * 60 * 24));
+
+          // Obtener el costo total actualizado (ya calculado en tamaño.html)
+          var costoTotal = parseInt(localStorage.getItem("costo_total"));
+
+          // Definir los aumentos de precio según el rango de días
+          var aumentoPrecio = 0;
+          if (diffDias <= 4) {
+            aumentoPrecio = 120;
+          } else if (diffDias <= 7) {
+            aumentoPrecio = 70;
+          } else if (diffDias <= 11) {
+            aumentoPrecio = 50;
+          } else {
+            // Para fechas más lejanas, mantener el costo total sin aumentos
+            aumentoPrecio = 0;
+          }
+
+          // Sumar el aumento de precio al costo total
+          costoTotal += aumentoPrecio;
+
+          // Guardar el costo total actualizado en localStorage
+          localStorage.setItem("costo_total", costoTotal);
+
+          // Guardar la fecha de entrega seleccionada en localStorage
+          localStorage.setItem(
+            "fecha_entrega",
+            fechaEntrega.toISOString().slice(0, 10)
+          );
+
+          // Redirigir a la página de cotización final (cotizacion.html)
+          window.location.href = "cotizacion.html";
+        });
+    </script>
+  </body>
+</html>

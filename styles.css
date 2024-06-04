@@ -1,0 +1,191 @@
+/* Estilos globales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5e1e1; /* Color de fondo pastel */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #ffd1dc; /* Color de fondo pastel */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 90%;
+    margin-top: 30px; /* Espacio superior añadido */
+}
+
+h1 {
+    color: #e75480; /* Color rosa pastel */
+}
+
+p {
+    color: #333;
+}
+
+/* Estilos para el botón COTIZA AHORA */
+.cta-button {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #e75480; /* Color rosa pastel */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; /* Forma circular */
+    font-size: 18px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #ff8fb6; /* Cambio de color al pasar el mouse */
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Estilos para el formulario de cotización de amigurumis */
+.size-options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.size-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #e75480; /* Color rosa pastel */
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.size-button:hover {
+    background-color: #ff8fb6; /* Cambio de color al pasar el mouse */
+    transform: scale(1.05); /* Efecto de escala al pasar el mouse */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.size-button img {
+    max-width: 80px;
+    max-height: 80px;
+    margin-bottom: 10px;
+}
+
+.submit-button {
+    background-color: #4CAF50; /* Color verde para el botón de enviar */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #45a049; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilos para el campo de selección personalizado */
+.custom-select {
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.custom-select select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    appearance: none; /* Elimina los estilos de selección nativos */
+}
+
+.custom-select select::-ms-expand {
+    display: none; /* Oculta la flecha de desplegable en IE10+ */
+}
+
+.custom-select select option {
+    padding: 10px;
+}
+
+.custom-select select option:first-child {
+    color: #aaa; /* Color de texto para la opción de placeholder */
+}
+
+.custom-select select:hover {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo translúcido al pasar el mouse */
+}
+
+/* Estilos para el ticket de cotización */
+.ticket {
+    background-color: #fff;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ticket-details {
+    margin-bottom: 20px;
+}
+
+.ticket-details ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ticket-details ul li {
+    margin-bottom: 10px;
+}
+
+.ticket-price {
+    text-align: center;
+}
+
+/* Estilos para los botones de redes sociales */
+.social-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+}
+
+.social-buttons a {
+    display: inline-block;
+    margin: 0 10px;
+}

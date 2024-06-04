@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Cotización de Amigurumis - Tipo de Hilo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Enlaza el archivo CSS externo -->
+    <script src="scripts.js"></script>
+    <!-- Enlaza el archivo JavaScript externo -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Selecciona el tipo de hilo para tu amigurumi</h1>
+      <form id="hilosForm">
+        <div class="form-group">
+          <label for="tipo_hilo">¿Qué tipo de hilo prefieres?</label>
+          <div class="custom-select">
+            <select name="tipo_hilo" id="tipo_hilo" required>
+              <option value="" disabled selected>
+                Selecciona el tipo de hilo
+              </option>
+              <option value="algodon">Hilo de Algodón</option>
+              <option value="afelpado">Hilo Afelpado</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Botón para ir a la siguiente página -->
+        <button type="submit" class="cta-button">Siguiente</button>
+      </form>
+    </div>
+
+    <script>
+      // Función para guardar la selección del tipo de hilo en localStorage y redirigir
+      document
+        .getElementById("hilosForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevenir el envío del formulario
+
+          var tipoHilo = document.getElementById("tipo_hilo").value;
+
+          // Guardar el tipo de hilo en localStorage
+          localStorage.setItem("tipo_hilo", tipoHilo);
+
+          // Obtener el número de colores guardado en localStorage
+          var numColores = localStorage.getItem("num_colores");
+
+          // Calcular el costo basado en el tipo de hilo y el número de colores
+          var costoTotal = 0;
+          if (tipoHilo === "algodon") {
+            costoTotal = numColores * 33;
+          } else if (tipoHilo === "afelpado") {
+            costoTotal = numColores * 79;
+          }
+
+          // Guardar el costo total en localStorage (opcional, depende de tu flujo de trabajo)
+          localStorage.setItem("costo_total", costoTotal);
+
+          // Redirigir a la página de tamaño.html
+          window.location.href = "tamaño.html";
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Cotización de Amigurumis - Número de Colores</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Enlaza el archivo CSS externo -->
+    <script src="scripts.js"></script>
+    <!-- Enlaza el archivo JavaScript externo -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>¿Cuántos colores tiene tu personaje?</h1>
+      <form id="coloresForm">
+        <div class="form-group">
+          <label for="num_colores"
+            >Selecciona el número exacto de colores que tiene tu
+            personaje</label
+          >
+          <div class="custom-select">
+            <select name="num_colores" id="num_colores" required>
+              <option value="" disabled selected>
+                Selecciona el número de colores
+              </option>
+              <option value="1">1 color</option>
+              <option value="2">2 colores</option>
+              <option value="3">3 colores</option>
+              <option value="4">4 colores</option>
+              <option value="5">5 colores</option>
+              <option value="6">6 colores</option>
+              <option value="7">7 colores</option>
+              <option value="8">8 colores</option>
+              <option value="9">9 colores</option>
+              <option value="10">10 colores</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Botón para ir a la siguiente página -->
+        <button type="submit" class="cta-button" id="submitButton">
+          Siguiente
+        </button>
+      </form>
+    </div>
+
+    <script>
+      // Función para guardar la selección en localStorage al enviar el formulario
+      document
+        .getElementById("coloresForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevenir el envío del formulario
+
+          // Desactivar el botón de envío para prevenir envíos múltiples
+          document.getElementById("submitButton").disabled = true;
+
+          var numColores = document.getElementById("num_colores").value;
+          localStorage.setItem("num_colores", numColores);
+
+          // Redirigir a la siguiente página
+          window.location.href = "hilos.html";
+        });
+    </script>
+  </body>
+</html>

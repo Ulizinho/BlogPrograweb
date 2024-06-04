@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Cotización de Amigurumis - Tamaño</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Enlaza el archivo CSS externo -->
+    <script src="scripts.js"></script>
+    <!-- Enlaza el archivo JavaScript externo -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Selecciona el tamaño para tu amigurumi</h1>
+      <form id="tamañoForm">
+        <div class="form-group">
+          <label for="tamaño">¿Qué tamaño prefieres?</label>
+          <div class="custom-select">
+            <select name="tamaño" id="tamaño" required>
+              <option value="" disabled selected>Selecciona el tamaño</option>
+              <option value="llavero">5 a 10 cm (Llavero)</option>
+              <option value="pequeño">10 a 15 cm (Pequeño)</option>
+              <option value="mediano">15 a 20 cm (Mediano)</option>
+              <option value="grande">20 a 25 cm (Grande)</option>
+              <option value="extra">25 cm o más (Extra Grande)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Botón para ir a la siguiente página -->
+        <button type="submit" class="cta-button">Siguiente</button>
+      </form>
+    </div>
+
+    <script>
+      // Función para guardar la selección del tamaño en localStorage y redirigir
+      document
+        .getElementById("tamañoForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevenir el envío del formulario
+
+          var tamañoSeleccionado = document.getElementById("tamaño").value;
+
+          // Guardar el tamaño seleccionado en localStorage
+          localStorage.setItem("tamaño_seleccionado", tamañoSeleccionado);
+
+          // Obtener el costo total actualizado (ya calculado en hilos.html o inicializado en 0)
+          var costoTotal = parseInt(localStorage.getItem("costo_total")) || 0;
+
+          // Ajustar el costo según el tamaño seleccionado
+          switch (tamañoSeleccionado) {
+            case "llavero":
+              costoTotal = 80; // Costo fijo para llavero
+              break;
+            case "extra":
+              // Añadir una bola extra de hilo dependiendo del tipo de hilo elegido
+              var tipoHilo = localStorage.getItem("tipo_hilo");
+              if (tipoHilo === "algodon") {
+                costoTotal += 33;
+              } else if (tipoHilo === "afelpado") {
+                costoTotal += 79;
+              }
+              break;
+            default:
+              // No se añade bola extra de hilo para otros tamaños
+              break;
+          }
+
+          // Actualizar el costo total en localStorage
+          localStorage.setItem("costo_total", costoTotal);
+
+          // Redirigir a la página de fecha.html
+          window.location.href = "fecha.html";
+        });
+    </script>
+  </body>
+</html>
